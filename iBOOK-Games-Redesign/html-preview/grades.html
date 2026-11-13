@@ -1,0 +1,696 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="theme-color" content="#9bdcf2"/>
+  <meta name="description" content="Explore iBOOK Games by school grade."/>
+  <title>Grades | iBOOK Games</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css"/>
+
+  <style>
+    :root {
+      --sky: #bceafa;
+      --sky-deep: #78cce8;
+      --blue: #287da9;
+      --navy: #244b63;
+      --cream: #fff8e9;
+      --paper: #fffdf7;
+      --green: #83bd79;
+      --green-dark: #4d925b;
+      --orange: #f5a34c;
+      --pink: #ef8d9a;
+      --ink: #315064;
+      --muted: #6d8792;
+      --line: rgba(55,105,125,.14);
+      --shadow: 0 12px 30px rgba(49,91,108,.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(180deg, #bceafa 0, #dff5fb 390px, #f7f8e9 720px, var(--cream) 100%);
+      min-height: 100vh;
+    }
+
+    body:before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      top: 230px;
+      left: -8%;
+      width: 116%;
+      height: 390px;
+      background:
+        radial-gradient(ellipse at 12% 70%, #a6d59a 0 24%, transparent 24.5%),
+        radial-gradient(ellipse at 48% 82%, #8fc987 0 29%, transparent 29.5%),
+        radial-gradient(ellipse at 88% 68%, #a6d59a 0 25%, transparent 25.5%);
+      opacity: .75;
+      pointer-events: none;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .container {
+      width: min(1160px, calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    .site-header {
+      position: relative;
+      z-index: 5;
+      background: rgba(255,253,247,.9);
+      border-bottom: 1px solid rgba(61,115,133,.12);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-inner {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      gap: 26px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      line-height: .85;
+      flex-shrink: 0;
+    }
+
+    .brand-word {
+      font-family: 'Baloo 2', sans-serif;
+      font-size: 31px;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      color: #287da9;
+    }
+
+    .brand-b {
+      color: #f19b4c;
+    }
+
+    .brand-games {
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: 5px;
+      color: #6a9a79;
+      margin: 5px 0 0 3px;
+    }
+
+    .desktop-nav {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-left: auto;
+    }
+
+    .nav-link {
+      padding: 10px 12px;
+      border-radius: 18px;
+      font-weight: 800;
+      font-size: 13px;
+      color: #527181;
+      transition: .2s;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      background: #e5f5fa;
+      color: #287da9;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .lang-switch {
+      border: 1px solid #d6e8e8;
+      background: #fffdf7;
+      color: #527181;
+      border-radius: 20px;
+      padding: 8px 12px;
+      font-weight: 900;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .lang-switch span {
+      color: #efaa65;
+      margin: 0 3px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      border-radius: 18px;
+      padding: 12px 20px;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 5px 0 rgba(49,91,108,.12);
+      transition: transform .18s, box-shadow .18s;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 7px 0 rgba(49,91,108,.1);
+    }
+
+    .button-pink {
+      background: #f19aa4;
+      color: #fff;
+    }
+
+    .button-small {
+      padding: 9px 16px;
+      font-size: 13px;
+    }
+
+    .menu-toggle {
+      display: none;
+      border: 0;
+      background: #e5f5fa;
+      color: #287da9;
+      border-radius: 13px;
+      padding: 8px 11px;
+      font-size: 20px;
+    }
+
+    .mobile-nav {
+      padding: 8px 20px 18px;
+      background: #fffdf7;
+    }
+
+    .mobile-nav a {
+      display: block;
+      padding: 11px 14px;
+      border-radius: 12px;
+      font-weight: 800;
+    }
+
+    .mobile-nav a:hover {
+      background: #e5f5fa;
+    }
+
+    /* تعديل الشريط العلوي ليكون فاتح ومقروء */
+    .page-banner {
+      padding: 64px 0 82px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.4); /* خلفية شفافة فاتحة لإبراز النص */
+    }
+
+    .page-banner:before,
+    .page-banner:after {
+      content: "";
+      position: absolute;
+      background: rgba(255,255,255,.78);
+      border-radius: 100px;
+      filter: blur(.2px);
+      z-index: 0;
+    }
+
+    .page-banner:before {
+      width: 150px;
+      height: 42px;
+      top: 45px;
+      left: 12%;
+      box-shadow: 30px -15px 0 -5px rgba(255,255,255,.78), 65px 2px 0 -8px rgba(255,255,255,.78);
+    }
+
+    .page-banner:after {
+      width: 130px;
+      height: 36px;
+      top: 105px;
+      right: 13%;
+      box-shadow: 27px -13px 0 -4px rgba(255,255,255,.78), 58px 1px 0 -7px rgba(255,255,255,.78);
+    }
+
+    .page-banner .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .tiny-label {
+      display: inline-block;
+      background: rgba(255,253,247,.8);
+      border: 1px solid rgba(255,255,255,.9);
+      border-radius: 30px;
+      padding: 8px 16px;
+      color: #4d8c9e;
+      font-size: 11px;
+      font-weight: 1000;
+      letter-spacing: 1.5px;
+    }
+
+    h1, h2, h3, strong {
+      font-family: 'Baloo 2', 'Nunito', sans-serif;
+    }
+
+    .page-banner h1 {
+      font-size: clamp(42px, 6vw, 66px);
+      line-height: 1.05;
+      margin: 15px 0 8px;
+      color: #285d78; /* لون أزرق داكن مقروء */
+      font-weight: 800;
+    }
+
+    .page-banner p {
+      font-size: 17px;
+      color: #527889;
+      margin: 0 auto;
+      max-width: 620px;
+      font-weight: 700;
+    }
+
+    .section {
+      padding: 0 0 76px;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      margin: 0 0 28px;
+    }
+
+    .section-head h2 {
+      font-size: 31px;
+      color: #315f73;
+      margin: 0 0 3px;
+    }
+
+    .section-head h2 span {
+      margin-right: 7px;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: #718994;
+      font-weight: 700;
+    }
+
+    .grades-page-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .grade-big {
+      min-height: 170px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      border: 2px solid rgba(255,255,255,.9);
+      border-radius: 27px;
+      padding: 20px 12px;
+      cursor: pointer;
+      color: #31576a;
+      box-shadow: var(--shadow);
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .grade-big:before {
+      content: "";
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.35);
+      right: -35px;
+      top: -45px;
+    }
+
+    .grade-big:after {
+      content: "";
+      position: absolute;
+      width: 75px;
+      height: 75px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.22);
+      left: -25px;
+      bottom: -35px;
+    }
+
+    .grade-big:hover {
+      transform: translateY(-6px) rotate(-1deg);
+      box-shadow: 0 18px 32px rgba(49,91,108,.17);
+    }
+
+    .grade-big:focus-visible {
+      outline: 4px solid #287da9;
+      outline-offset: 4px;
+    }
+
+    .grade-big>span {
+      font-size: 37px;
+      line-height: 1.2;
+      filter: drop-shadow(0 3px 0 rgba(255,255,255,.5));
+    }
+
+    .grade-big strong {
+      font-size: 24px;
+      line-height: 1.2;
+    }
+
+    .grade-big small {
+      font-size: 12px;
+      font-weight: 900;
+      opacity: .72;
+    }
+
+    .grade-tone-0 { background: #d7f0e0; }
+    .grade-tone-1 { background: #d9eff8; }
+    .grade-tone-2 { background: #ffedce; }
+    .grade-tone-3 { background: #f9dfe2; }
+    .grade-tone-4 { background: #e8e1f8; }
+    .grade-tone-5 { background: #e6efcf; }
+
+    .grade-big.selected {
+      border-color: #398eae;
+      box-shadow: 0 0 0 4px rgba(56,142,174,.16), var(--shadow);
+      transform: translateY(-4px);
+    }
+
+    .grade-notice {
+      max-width: 760px;
+      margin: 34px auto 0;
+      padding: 24px 28px;
+      text-align: center;
+      border: 1px solid rgba(92,143,132,.2);
+      border-radius: 25px;
+      background: rgba(255,253,247,.92);
+      box-shadow: 0 10px 28px rgba(49,91,108,.08);
+    }
+
+    .grade-notice strong {
+      display: block;
+      font-size: 22px;
+      color: #547d67;
+    }
+
+    .grade-notice p {
+      color: #71858c;
+      font-weight: 700;
+      line-height: 1.6;
+      margin: 6px auto 17px;
+      max-width: 620px;
+    }
+
+    .footer {
+      background: #315f73;
+      color: #f7fbf4;
+      padding: 42px 0 18px;
+      border-radius: 42px 42px 0 0;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.2fr 1.4fr 1fr 1fr;
+      gap: 28px;
+      padding-bottom: 28px;
+    }
+
+    .footer-brand .brand-word { color: #fff; }
+    .footer-brand .brand-games { color: #c4e5c7; }
+
+    .footer-top strong {
+      display: block;
+      font-size: 18px;
+      margin-bottom: 7px;
+      color: #fff;
+    }
+
+    .footer-top p,
+    .footer-top a:not(.brand) {
+      display: block;
+      color: #d4e7e5;
+      font-size: 13px;
+      line-height: 1.9;
+      margin: 0;
+    }
+
+    .footer-top a:not(.brand):hover {
+      color: #ffcf91;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.17);
+      padding-top: 15px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      color: #c6dcda;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    @media(max-width: 900px) {
+      .desktop-nav { gap: 0; }
+      .nav-link { padding: 9px 8px; font-size: 12px; }
+      .grades-page-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .footer-top { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media(max-width: 680px) {
+      .nav-inner { min-height: 72px; }
+      .desktop-nav { display: none; }
+      .nav-actions { margin-left: auto; }
+      .menu-toggle { display: block; }
+      .page-banner { padding: 50px 0 68px; }
+      .page-banner p { font-size: 15px; }
+      .grades-page-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 13px; }
+      .grade-big { min-height: 145px; border-radius: 22px; }
+      .grade-big strong { font-size: 21px; }
+      .section-head h2 { font-size: 27px; }
+      .section-head p { font-size: 13px; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 22px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+
+    @media(max-width: 380px) {
+      .container { width: calc(100% - 28px); }
+      .lang-switch { padding: 7px 9px; }
+      .button-small { padding: 8px 11px; }
+      .grades-page-grid { gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-inner container">
+      <a class="brand" href="index.html" aria-label="iBOOK Games Home">
+        <span class="brand-word">i<span class="brand-b">B</span>OOK</span>
+        <span class="brand-games">G A M E S</span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Main Navigation">
+        <a class="nav-link" href="index.html" data-i18n="home">⌂ Home</a>
+        <a class="nav-link" href="games/index.html" data-i18n="explore">🎮 Explore Games</a>
+        <a class="nav-link" href="subjects.html" data-i18n="subjects">▦ Subjects</a>
+        <a class="nav-link active" href="grades.html" data-i18n="grades">🎓 Grades</a>
+        <a class="nav-link" href="schools.html" data-i18n="schools">♜ For Schools</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button type="button" class="lang-switch" id="langToggle" aria-label="Toggle English and Arabic">EN <span>/</span> AR</button>
+        <a href="login.html" class="button button-pink button-small" data-i18n="login">♙ Log In</a>
+        <button type="button" class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">☰</button>
+      </div>
+    </div>
+
+    <nav id="mobileNav" class="mobile-nav" hidden>
+      <a href="index.html">Home</a>
+      <a href="games/index.html">Explore Games</a>
+      <a href="subjects.html">Subjects</a>
+      <a href="grades.html">Grades</a>
+      <a href="schools.html">For Schools</a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="page-banner">
+      <div class="container">
+        <span class="tiny-label">🎓 EVERY LEARNER, EVERY LEVEL</span>
+        <h1>Games by Grade</h1>
+        <p>A friendly space for students, families, and teachers to browse by school grade.</p>
+      </div>
+    </section>
+
+    <section class="container section">
+      <div class="section-head">
+        <div>
+          <h2><span aria-hidden="true">🎓</span> Choose a Grade</h2>
+          <p>The grade-specific assignments will sync with the original game records.</p>
+        </div>
+      </div>
+
+      <div class="grades-page-grid" aria-label="Choose a school grade">
+        <button type="button" class="grade-big grade-tone-1" data-grade="1" aria-pressed="false">
+          <span>🎒</span>
+          <strong>Grade 1</strong>
+          <small>Select grade</small>
+        </button>
+        <button type="button" class="grade-big grade-tone-2" data-grade="2" aria-pressed="false">
+          <span>🎒</span>
+          <strong>Grade 2</strong>
+          <small>Select grade</small>
+        </button>
+        <button type="button" class="grade-big grade-tone-3" data-grade="3" aria-pressed="false">
+          <span>🎒</span>
+          <strong>Grade 3</strong>
+          <small>Select grade</small>
+        </button>
+        <button type="button" class="grade-big grade-tone-4" data-grade="4" aria-pressed="false">
+          <span>🎒</span>
+          <strong>Grade 4</strong>
+          <small>Select grade</small>
+        </button>
+        <button type="button" class="grade-big grade-tone-5" data-grade="5" aria-pressed="false">
+          <span>🎒</span>
+          <strong>Grade 5</strong>
+          <small>Select grade</small>
+        </button>
+        <button type="button" class="grade-big grade-tone-0" data-grade="6" aria-pressed="false">
+          <span>🎒</span>
+          <strong>Grade 6</strong>
+          <small>Select grade</small>
+        </button>
+        <button type="button" class="grade-big grade-tone-1" data-grade="7" aria-pressed="false">
+          <span>🎒</span>
+          <strong>Grade 7</strong>
+          <small>Select grade</small>
+        </button>
+        <button type="button" class="grade-big grade-tone-2" data-grade="8" aria-pressed="false">
+          <span>🎒</span>
+          <strong>Grade 8</strong>
+          <small>Select grade</small>
+        </button>
+        <button type="button" class="grade-big grade-tone-3" data-grade="9" aria-pressed="false">
+          <span>🎒</span>
+          <strong>Grade 9</strong>
+          <small>Select grade</small>
+        </button>
+        <button type="button" class="grade-big grade-tone-4" data-grade="10" aria-pressed="false">
+          <span>🎒</span>
+          <strong>Grade 10</strong>
+          <small>Select grade</small>
+        </button>
+        <button type="button" class="grade-big grade-tone-5" data-grade="11" aria-pressed="false">
+          <span>🎒</span>
+          <strong>Grade 11</strong>
+          <small>Select grade</small>
+        </button>
+        <button type="button" class="grade-big grade-tone-0" data-grade="12" aria-pressed="false">
+          <span>🎒</span>
+          <strong>Grade 12</strong>
+          <small>Select grade</small>
+        </button>
+      </div>
+
+      <div class="grade-notice" id="gradeNotice" aria-live="polite">
+        <strong>Curriculum mapping pending</strong>
+        <p>The original site lists Grades 1–12, but individual game-to-grade assignments were not exposed. We have deliberately not invented grade recommendations.</p>
+        <a class="button button-pink" href="games/index.html">Browse all 60 games</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-top">
+      <a class="brand footer-brand" href="index.html">
+        <span class="brand-word">iBOOK</span>
+        <span class="brand-games">G A M E S</span>
+      </a>
+
+      <div>
+        <strong data-i18n="footerTag">Learn. Play. Grow.</strong>
+        <p>Interactive and educational games for curious minds.</p>
+      </div>
+
+      <div>
+        <strong>Quick Links</strong>
+        <a href="games/index.html">Explore Games</a>
+        <a href="subjects.html">Subjects</a>
+        <a href="grades.html">Grades</a>
+      </div>
+
+      <div>
+        <strong>Company</strong>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="schools.html">For Schools</a>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <span>© 2026 iBOOK Games · UI redesign concept</span>
+      <span>English / العربية · Responsive experience</span>
+    </div>
+  </footer>
+
+  <script src="assets/app.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Mobile menu
+      const toggle = document.getElementById('menuToggle');
+      const mobileNav = document.getElementById('mobileNav');
+
+      if (toggle && mobileNav) {
+        toggle.addEventListener('click', function () {
+          const isOpen = !mobileNav.hasAttribute('hidden');
+          if (isOpen) mobileNav.setAttribute('hidden', '');
+          else mobileNav.removeAttribute('hidden');
+          toggle.setAttribute('aria-expanded', String(!isOpen));
+        });
+      }
+
+      // Grade selection
+      document.querySelectorAll('.grade-big').forEach(function (button) {
+        button.addEventListener('click', function () {
+          document.querySelectorAll('.grade-big').forEach(function (item) {
+            item.classList.remove('selected');
+            item.setAttribute('aria-pressed', 'false');
+          });
+
+          button.classList.add('selected');
+          button.setAttribute('aria-pressed', 'true');
+
+          const notice = document.getElementById('gradeNotice');
+          notice.querySelector('strong').textContent = 'Grade ' + button.dataset.grade + ' selected';
+          notice.querySelector('p').textContent = 'Grade ' + button.dataset.grade + ' is selected. Game-to-grade assignments are not available yet, so you can browse the full game collection below.';
+        });
+      });
+    });
+  </script>
+</body>
+</html>

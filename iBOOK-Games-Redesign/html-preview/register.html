@@ -1,0 +1,292 @@
+
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#b9edf2">
+    <meta name="description" content="Create your iBOOK Games account and start learning through play.">
+    <title>Create Account | iBOOK Games</title>
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="nav-inner container">
+
+        <a class="brand" href="index.html">
+            <span class="brand-word">i<span class="brand-b">B</span>OOK</span>
+            <span class="brand-games">G A M E S</span>
+        </a>
+
+        <nav class="desktop-nav">
+            <a class="nav-link" href="index.html">⌂ Home</a>
+            <a class="nav-link" href="games/index.html">🎮 Explore Games</a>
+            <a class="nav-link" href="subjects.html">▦ Subjects</a>
+            <a class="nav-link" href="grades.html">🎓 Grades</a>
+            <a class="nav-link" href="schools.html">♜ For Schools</a>
+        </nav>
+
+        <div class="nav-actions">
+            <button class="lang-switch" id="langToggle">EN / AR</button>
+            <a href="login.html" class="button button-main button-small">
+                ♙ Log In
+            </a>
+            <button class="menu-toggle" id="menuToggle">☰</button>
+        </div>
+    </div>
+
+    <nav id="mobileNav" class="mobile-nav" hidden>
+        <a href="index.html">Home</a>
+        <a href="games/index.html">Explore Games</a>
+        <a href="subjects.html">Subjects</a>
+        <a href="grades.html">Grades</a>
+        <a href="schools.html">For Schools</a>
+    </nav>
+</header>
+
+
+<main>
+
+<section class="signup-world">
+
+    <span class="cloud cloud-one"></span>
+    <span class="cloud cloud-two"></span>
+    <span class="cloud cloud-three"></span>
+    <div class="birds">⌁ ⌁ ⌁</div>
+
+    <div class="container signup-layout">
+
+        <!-- Welcome Section -->
+        <div class="welcome-copy">
+
+            <span class="eyebrow">
+                ✨ YOUR LEARNING ADVENTURE STARTS HERE
+            </span>
+
+            <h1>
+                Join the <em>Fun.</em><br>
+                Start Growing!
+            </h1>
+
+            <p>
+                Create your free account and discover a world
+                of educational games, exciting challenges,
+                and playful learning experiences.
+            </p>
+
+            <div class="welcome-points">
+                <span>🎮 60+ Educational Games</span>
+                <span>🎓 All Grade Levels</span>
+                <span>🌟 Learn Through Play</span>
+            </div>
+
+        </div>
+
+
+        <!-- Signup Card -->
+        <div class="signup-card">
+
+            <div class="card-mascot">
+                <img src="assets/images/mascot.png"
+                     alt="iBOOK Games Mascot"
+                     onerror="this.style.display='none'">
+            </div>
+
+            <div class="signup-heading">
+
+                <span class="mini-label">
+                    CREATE YOUR ACCOUNT
+                </span>
+
+                <h2>Join iBOOK Games!</h2>
+
+                <p>Fill in your details to get started.</p>
+
+            </div>
+
+
+            <form class="signup-form" id="signupForm">
+
+                <label class="field-label">
+                    Full Name
+                    <input
+                        type="text"
+                        name="fullname"
+                        placeholder="Enter your full name"
+                        autocomplete="name"
+                        required>
+                </label>
+
+                <label class="field-label">
+                    Email Address
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="example@email.com"
+                        autocomplete="email"
+                        required>
+                </label>
+
+                <div class="signup-row">
+
+                    <label class="field-label">
+                        Grade
+                        <select name="grade" required>
+                            <option value="" disabled selected>
+                                Select Grade
+                            </option>
+                            <option>Kindergarten</option>
+                            <option>Grade 1</option>
+                            <option>Grade 2</option>
+                            <option>Grade 3</option>
+                            <option>Grade 4</option>
+                            <option>Grade 5</option>
+                            <option>Grade 6</option>
+                            <option>Grade 7</option>
+                            <option>Grade 8</option>
+                            <option>Grade 9</option>
+                            <option>Grade 10</option>
+                            <option>Grade 11</option>
+                            <option>Grade 12</option>
+                        </select>
+                    </label>
+
+                    <label class="field-label">
+                        Account Type
+                        <select name="accountType" required>
+                            <option value="student" selected>Student</option>
+                            <option value="parent">Parent</option>
+                            <option value="teacher">Teacher</option>
+                        </select>
+                    </label>
+
+                </div>
+
+                <label class="field-label">
+                    Password
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Create a password"
+                        minlength="8"
+                        autocomplete="new-password"
+                        required>
+                </label>
+
+                <label class="field-label">
+                    Confirm Password
+                    <input
+                        type="password"
+                        name="confirmPassword"
+                        placeholder="Re-enter your password"
+                        minlength="8"
+                        autocomplete="new-password"
+                        required>
+                </label>
+
+                <label class="terms-check">
+                    <input type="checkbox" name="terms" required>
+                    <span>
+                        I agree to the
+                        <a href="#">Terms & Conditions</a>
+                    </span>
+                </label>
+
+                <p class="signup-warning" id="signupWarning" hidden>
+                    Passwords do not match. Please try again.
+                </p>
+
+                <button type="submit"
+                        class="button button-main signup-submit">
+                    ✨ Create My Account
+                </button>
+
+                <p class="form-note">
+                    Your learning journey is just one step away!
+                </p>
+
+            </form>
+
+            <div class="signup-note">
+                Already have an account?
+                <a href="login.html">Log In</a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="ground-decoration"></div>
+
+</section>
+
+</main>
+
+
+<footer class="footer">
+
+    <div class="container footer-top">
+
+        <a class="brand footer-brand" href="index.html">
+            <span class="brand-word">iBOOK</span>
+            <span class="brand-games">G A M E S</span>
+        </a>
+
+        <div>
+            <strong>Learn. Play. Grow.</strong>
+            <p>Interactive and educational games for curious minds.</p>
+        </div>
+
+        <div>
+            <strong>Quick Links</strong>
+            <a href="games/index.html">Explore Games</a>
+            <a href="subjects.html">Subjects</a>
+            <a href="grades.html">Grades</a>
+        </div>
+
+        <div>
+            <strong>Company</strong>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="schools.html">For Schools</a>
+        </div>
+
+    </div>
+
+    <div class="container footer-bottom">
+        <span>© 2026 iBOOK Games · UI redesign concept</span>
+        <span>English / العربية · Responsive experience</span>
+    </div>
+
+</footer>
+
+
+<script src="assets/app.js" defer></script>
+
+<script>
+document.getElementById("signupForm").addEventListener("submit", function(e) {
+
+    const password = this.password.value;
+    const confirmPassword = this.confirmPassword.value;
+    const warning = document.getElementById("signupWarning");
+
+    if (password !== confirmPassword) {
+        e.preventDefault();
+        warning.hidden = false;
+        return;
+    }
+
+    warning.hidden = true;
+
+    // Frontend prototype only.
+    // Connect this form to the backend for actual registration.
+    e.preventDefault();
+
+    alert("Your information is valid! Backend registration is not connected yet.");
+});
+</script>
+
+</body>
+</html>
